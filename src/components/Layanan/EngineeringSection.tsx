@@ -1,7 +1,9 @@
 "use client";
 
+import { useState, useRef } from "react";
 import Image from "next/image";
 import { cloudinaryImage } from "@/lib/cloudinaryImage";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function EngineeringSection() {
   const engineeringServices = [
@@ -30,7 +32,7 @@ export default function EngineeringSection() {
       name: "Mekanikal & Elektrikal (MEP)",
       images: [
         "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772352740/SECTION-BEASISWA-LANDSCAPE_uk71mp.png",
-        "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772352740/SECTION-BEASISWA-LANDSCAPE_uk71mp.png",
+        "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772352740/SECTION-250-ANAK-YATIM-LANDSCAPE_tocttp.png",
       ],
     },
   ];
@@ -54,36 +56,99 @@ export default function EngineeringSection() {
         </div>
 
         {/* Engineering Services Grid */}
+        {/* Architecture Services */}
         <div className="grid md:grid-cols-2 gap-12">
           {engineeringServices.map((service, idx) => (
-            <div key={idx} className="group">
-              {/* Service Title */}
-              <h3 className="text-[rgb(var(--color-primary))] font-semibold text-lg mb-4">{service.name}</h3>
-
-              {/* Carousel */}
-              <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4">
-                {service.images.map((img, i) => (
-                  <div
-                    key={i}
-                    className="flex-shrink-0 w-[320px] h-[200px] md:w-[400px] md:h-[240px] relative rounded-lg overflow-hidden shadow-lg snap-center hover:scale-105 transition-transform duration-300"
-                  >
-                    <Image
-                      src={cloudinaryImage(img, "banner")}
-                      alt={`${service.name} contoh desain ${i + 1}`}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 400px"
-                      priority={i === 0}
-                    />
-                    <div className="absolute inset-0 bg-black/10 pointer-events-none rounded-lg" />
-                  </div>
-                ))}
-              </div>
-            </div>
+            <ServiceCarousel key={idx} service={service} />
           ))}
         </div>
 
       </div>
     </section>
+  );
+}
+
+function ServiceCarousel({ service }: { service: { name: string; images: string[] } }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const scrollToIndex = (index: number) => {
+    if (!carouselRef.current) return;
+    const container = carouselRef.current;
+    const child = container.children[index] as HTMLElement;
+    container.scrollTo({
+      left: child.offsetLeft - 8, // gap compensation
+      behavior: "smooth",
+    });
+    setActiveIndex(index);
+  };
+
+  const nextImage = () => scrollToIndex((activeIndex + 1) % service.images.length);
+  const prevImage = () =>
+    scrollToIndex((activeIndex - 1 + service.images.length) % service.images.length);
+
+  return (
+    <div className="relative">
+      <h3 className="text-[rgb(var(--color-primary))] font-semibold text-lg mb-4">{service.name}</h3>
+
+      {/* Carousel */}
+      <div className="relative">
+        <div
+          ref={carouselRef}
+          className="flex overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar gap-4"
+        >
+          {service.images.map((img, i) => (
+            <div
+              key={i}
+              className="flex-shrink-0 w-full md:w-[400px] h-[220px] relative rounded-xl overflow-hidden shadow-lg snap-center"
+            >
+              <Image
+                src={cloudinaryImage(img, "banner")}
+                alt={`${service.name} contoh desain ${i + 1}`}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 400px"
+                priority={i === 0}
+              />
+              <div className="absolute inset-0 bg-black/10 pointer-events-none rounded-xl" />
+            </div>
+          ))}
+        </div>
+
+        {/* Arrows desktop */}
+        {service.images.length > 1 && (
+          <>
+            <button
+              onClick={prevImage}
+              className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 bg-white/90 text-[rgb(var(--color-primary))] p-2 rounded-full shadow-md hover:scale-110 transition-transform"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={nextImage}
+              className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 bg-white/90 text-[rgb(var(--color-primary))] p-2 rounded-full shadow-md hover:scale-110 transition-transform"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </>
+        )}
+      </div>
+
+      
+
+      {/* Dots */}
+      <div className="flex justify-center mt-2 gap-2">
+        {service.images.map((_, i) => (
+          <span
+            key={i}
+            className={`w-2 h-2 rounded-full transition-all ${
+              activeIndex === i
+                ? "bg-[rgb(var(--color-primary))] scale-125"
+                : "bg-gray-300"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
   );
 }
