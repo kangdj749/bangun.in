@@ -29,7 +29,7 @@ export default function MobileMenu({ isOpen, onClose }: Props) {
 
       {/* Drawer */}
       <aside
-        className={`fixed top-0 left-0 h-full w-[85%] max-w-[320px] bg-white z-50 shadow-xl transform transition-transform duration-300 ${
+        className={`fixed top-0 right-0 h-full w-[85%] max-w-[320px] bg-white z-50 shadow-xl transform transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
