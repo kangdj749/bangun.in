@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 
 import Footer from "@/components/Footer";
 import Navbarbgn from "@/components/Navbarbgn";
+import Navbar from "@/components/layout/Navbar";
 
 export const metadata: Metadata = {
   title: "PT Bangun Cipta Solusi",
@@ -27,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="font-sans text-gray-900 bg-white">
-        <Navbarbgn />
+        <Navbar />
         <main className="pt-20">{children}</main> {/* pt-20 supaya nggak tertutup navbar fixed */}
         <Footer />
       </body>

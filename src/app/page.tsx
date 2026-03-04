@@ -13,7 +13,7 @@ import LegalSection from "@/components/LegalSection";
 import FinalCTASection from "@/components/FinalCTASection";
 import SectionWrapper from "@/components/SectionWrapper";
 
-import Footer from "@/components/Footer";
+
 
 const LandingPage: React.FC = () => {
   
