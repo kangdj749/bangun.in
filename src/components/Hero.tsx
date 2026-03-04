@@ -56,15 +56,14 @@ export default function HeroSection() {
           <h1 className="text-[26px] md:text-[38px] font-semibold leading-[1.25] tracking-[0.3px] mb-6">
             Integrated Architecture, Engineering & Construction
             <span className="block text-[rgb(var(--color-primary))] mt-1">
-              Management Excellence
+              Excellence
             </span>
           </h1>
 
           {/* Subheadline */}
           <p className="text-[14.5px] md:text-[15.5px] leading-[1.8] text-[rgb(var(--color-white))]/80 mb-10">
-            PT. Bangun Cipta Solusi (BANGUN.IN) menghadirkan layanan terintegrasi
-            dalam arsitektur, rekayasa teknik, dan manajemen konstruksi untuk
-            mendukung pembangunan yang terukur, akuntabel, dan berkelanjutan.
+            Konsultan teknik independen yang menghadirkan solusi terintegrasi 
+            untuk perencanaan dan manajemen konstruksi di seluruh Indonesia.
           </p>
 
           {/* CTA */}
@@ -104,7 +103,7 @@ export default function HeroSection() {
                 hover:text-[rgb(var(--color-dark))]
               "
             >
-              Jelajahi Layanan
+              Lihat Portofolio
             </button>
 
           </div>

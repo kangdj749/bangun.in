@@ -1,19 +1,37 @@
 @import "tailwindcss";
 
-/* ================================
-   DESIGN TOKENS
-================================ */
+/* ======================================================
+   ENTERPRISE DESIGN TOKENS — ELITE ENGINEERING SYSTEM
+====================================================== */
 
-/* Color Tokens */
 :root {
-   /* RGB only (no rgb() wrapper) */
-  --color-primary: 128 0 0;        /* #800000 */
-  --color-secondary: 192 192 192;  /* #c0c0c0 */
+
+  /* ================================
+     BRAND CORE
+  ================================= */
+
+  --color-primary: 128 0 0;        /* Deep Maroon */
+  --color-secondary: 180 180 185;  /* Neutral border */
   --color-white: 255 255 255;
   --color-black: 0 0 0;
 
-  --color-muted: 107 114 128;
-  
+  /* ================================
+     DARK SYSTEM (Layered)
+  ================================= */
+
+  --color-bg: 12 12 14;        /* Main background */
+  --color-dark: 16 16 18;      /* Footer / strong section */
+  --color-surface: 22 22 26;   /* Card / elevated layer */
+  --color-elevated: 30 30 36;  /* Hover / deeper surface */
+
+  --color-text: 235 235 235;   /* Main text */
+  --color-muted: 150 150 155;  /* Secondary text */
+  --color-subtle: 110 110 115; /* Fine caption */
+
+  /* ================================
+     LAYOUT SYSTEM
+  ================================= */
+
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 14px;
@@ -21,9 +39,10 @@
   --container-max: 1020px;
 }
 
-/* ================================
+
+/* ======================================================
    BASE STYLING
-================================ */
+====================================================== */
 
 html {
   scroll-behavior: smooth;
@@ -31,17 +50,18 @@ html {
 
 body {
   font-family: 'Roboto', sans-serif;
-  background: var(--color-bg);
-  color: var(--color-text);
+  background: rgb(var(--color-bg));
+  color: rgb(var(--color-text));
   font-size: 14px;
   line-height: 1.6;
   letter-spacing: 0.2px;
   -webkit-font-smoothing: antialiased;
 }
 
-/* ================================
+
+/* ======================================================
    LAYOUT SYSTEM
-================================ */
+====================================================== */
 
 .container-main {
   max-width: var(--container-max);
@@ -50,18 +70,19 @@ body {
 }
 
 .section {
-  padding-top: 64px;
-  padding-bottom: 64px;
+  padding-top: 80px;
+  padding-bottom: 80px;
 }
 
 .section-tight {
-  padding-top: 48px;
-  padding-bottom: 48px;
+  padding-top: 56px;
+  padding-bottom: 56px;
 }
 
-/* ================================
-   TYPOGRAPHY SYSTEM (Compact)
-================================ */
+
+/* ======================================================
+   TYPOGRAPHY SYSTEM (Compact Elite)
+====================================================== */
 
 .h1 {
   font-size: 28px;
@@ -82,7 +103,7 @@ body {
 
 .body-lg {
   font-size: 15px;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .body {
@@ -91,20 +112,23 @@ body {
 
 .caption {
   font-size: 12px;
-  color: var(--color-muted);
+  color: rgb(var(--color-muted));
 }
 
-/* ================================
-   BUTTON SYSTEM
-================================ */
+
+/* ======================================================
+   BUTTON SYSTEM (Premium Subtle)
+====================================================== */
 
 .btn-primary {
-  background: var(--color-primary);
-  color: var(--color-white);
-  padding: 10px 20px;
+  background: rgb(var(--color-primary));
+  color: rgb(var(--color-white));
+  padding: 10px 22px;
   border-radius: var(--radius-md);
   font-weight: 500;
-  transition: 0.25s ease;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  transition: 0.3s ease;
 }
 
 .btn-primary:hover {
@@ -112,51 +136,78 @@ body {
 }
 
 .btn-outline {
-  border: 1px solid var(--color-primary);
-  color: var(--color-primary);
-  padding: 10px 20px;
+  border: 1px solid rgb(var(--color-primary));
+  color: rgb(var(--color-white));
+  padding: 10px 22px;
   border-radius: var(--radius-md);
-  transition: 0.25s ease;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: 0.3s ease;
 }
 
 .btn-outline:hover {
-  background: var(--color-primary);
-  color: var(--color-white);
+  background: rgb(var(--color-primary));
+  color: rgb(var(--color-white));
 }
 
-/* ================================
-   CARD SYSTEM
-================================ */
+
+/* ======================================================
+   CARD SYSTEM (Dark Premium)
+====================================================== */
 
 .card-premium {
-  border: 1px solid var(--color-secondary);
+  border: 1px solid rgb(var(--color-secondary));
   border-radius: var(--radius-lg);
   padding: 24px;
-  background: var(--color-white);
+  background: rgb(var(--color-surface));
+  transition: 0.3s ease;
 }
 
-/* ================================
+.card-premium:hover {
+  background: rgb(var(--color-elevated));
+}
+
+
+/* ======================================================
    TEXT HELPERS
-================================ */
+====================================================== */
 
 .text-primary {
-  color: var(--color-primary);
+  color: rgb(var(--color-primary));
 }
 
 .text-muted {
-  color: var(--color-muted);
+  color: rgb(var(--color-muted));
+}
+
+.text-subtle {
+  color: rgb(var(--color-subtle));
 }
 
 .bg-primary {
-  background: var(--color-primary);
+  background: rgb(var(--color-primary));
 }
 
 .bg-dark {
-  background: var(--color-black);
-  color: var(--color-white);
+  background: rgb(var(--color-dark));
+  color: rgb(var(--color-white));
+}
+
+.bg-surface {
+  background: rgb(var(--color-surface));
 }
 
 
+/* ======================================================
+   UTILITIES
+====================================================== */
 
-.no-scrollbar::-webkit-scrollbar { display: none; }
-.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

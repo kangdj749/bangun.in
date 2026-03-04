@@ -73,8 +73,7 @@ export default function TrustStrip() {
 
         {/* Bottom Support Text */}
         <p className="text-center text-[11.5px] md:text-[12px] text-muted mt-10 max-w-3xl mx-auto leading-[1.7]">
-          Didukung tenaga ahli dari Institut Teknologi Bandung, Universitas
-          Padjadjaran, Universitas Gadjah Mada, dan institusi lainnya.
+          Didukung tenaga ahli dari Institut Teknologi Bandung, Universitas Gadjah Mada, dan institusi lainnya.
         </p>
 
       </div>

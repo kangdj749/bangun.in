@@ -4,69 +4,120 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-[rgb(var(--color-primary))] text-[rgb(var(--color-secondary))] pt-10 pb-6">
-      <div className="container-main grid md:grid-cols-4 gap-6">
+    <footer className="bg-[rgb(var(--color-dark))] text-[rgb(var(--color-white))] pt-20 pb-10">
 
-        {/* Brand & Description */}
-        <div className="space-y-2">
-          <h3 className="text-xl md:text-2xl font-bold tracking-tight ">
-            BANGUN.IN
-          </h3>
-          <p className="text-sm leading-relaxed  ">
-            Konsultan Arsitektur, Engineering & Manajemen Konstruksi terintegrasi untuk proyek Anda.
-          </p>
+      <div className="container-main">
+
+        {/* Top Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-12">
+
+          {/* Brand */}
+          <div className="space-y-5">
+            <h3 className="text-[18px] md:text-[20px] font-semibold tracking-[0.5px]">
+              BANGUN.IN
+            </h3>
+
+            <p className="text-[13px] leading-[1.7] text-[rgb(var(--color-muted))] max-w-xs">
+              Konsultan arsitektur, rekayasa teknik, dan manajemen konstruksi
+              terintegrasi untuk proyek berskala profesional dan berstandar regulasi.
+            </p>
+          </div>
+
+          {/* Layanan */}
+          <div className="space-y-5">
+            <h4 className="text-[10px] uppercase tracking-[2px] text-[rgb(var(--color-muted))]">
+              Layanan
+            </h4>
+
+            <ul className="space-y-3 text-[13px]">
+              <li>
+                <Link
+                  href="/layanan#penataan-ruang"
+                  className="text-[rgb(var(--color-white))] hover:text-[rgb(var(--color-primary))] transition-colors duration-300"
+                >
+                  Penataan Ruang
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href="/layanan#arsitektur"
+                  className="text-[rgb(var(--color-white))] hover:text-[rgb(var(--color-primary))] transition-colors duration-300"
+                >
+                  Arsitektur
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href="/layanan#rekayasa"
+                  className="text-[rgb(var(--color-white))] hover:text-[rgb(var(--color-primary))] transition-colors duration-300"
+                >
+                  Rekayasa Teknik
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href="/layanan#topografi"
+                  className="text-[rgb(var(--color-white))] hover:text-[rgb(var(--color-primary))] transition-colors duration-300"
+                >
+                  Topografi & Geoteknik
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Kontak */}
+          <div className="space-y-5">
+            <h4 className="text-[10px] uppercase tracking-[2px] text-[rgb(var(--color-muted))]">
+              Kontak
+            </h4>
+
+            <div className="space-y-3 text-[13px] leading-[1.7] text-[rgb(var(--color-muted))]">
+              <p>Rukan Graha Kencana, Blok A, Jakarta Barat</p>
+              <p>Telp: (+62) 877-6550-5935</p>
+              <p>Email: bangunciptasolusi01@gmail.com</p>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="space-y-5">
+            <h4 className="text-[10px] uppercase tracking-[2px] text-[rgb(var(--color-muted))]">
+              Konsultasi
+            </h4>
+
+            <Link
+              href="/kontak"
+              className="
+                inline-block
+                px-8 py-3
+                text-[11px]
+                uppercase
+                tracking-[1.5px]
+                font-medium
+                border
+                border-[rgb(var(--color-primary))]
+                text-[rgb(var(--color-white))]
+                hover:bg-[rgb(var(--color-primary))]
+                transition-all
+                duration-400
+              "
+            >
+              Ajukan Konsultasi
+            </Link>
+          </div>
+
         </div>
 
-        {/* Layanan */}
-        <div className="space-y-2">
-          <h4 className="font-semibold leading-relaxed text-sm tracking-wide mb-2">Layanan</h4>
-          <ul className="space-y-1 text-sm leading-relaxed">
-            <li>
-              <Link href="/layanan#penataan-ruang" className="hover:text-[rgb(var(--color-primary))] transition-colors">
-                Penataan Ruang
-              </Link>
-            </li>
-            <li>
-              <Link href="/layanan#arsitektur" className="hover:text-[rgb(var(--color-primary))] transition-colors">
-                Arsitektur
-              </Link>
-            </li>
-            <li>
-              <Link href="/layanan#rekayasa" className="hover:text-[rgb(var(--color-primary))] transition-colors">
-                Rekayasa Teknik
-              </Link>
-            </li>
-            <li>
-              <Link href="/layanan#topografi" className="hover:text-[rgb(var(--color-primary))] transition-colors">
-                Topografi & Geoteknik
-              </Link>
-            </li>
-          </ul>
+        {/* Divider */}
+        <div className="mt-16 h-px bg-[rgb(var(--color-surface))]" />
+
+        {/* Bottom */}
+        <div className="mt-8 text-[11px] tracking-[0.5px] text-[rgb(var(--color-muted))] text-center">
+          © {new Date().getFullYear()} PT Bangun Cipta Solusi. Seluruh hak dilindungi.
         </div>
 
-        {/* Kontak */}
-        <div className="space-y-2">
-          <h4 className="font-semibold  text-sm tracking-wide mb-2">Kontak</h4>
-          <p className="text-sm text-white/80 leading-relaxed">Rukan Graha Kencana, Blok A, Jakarta Barat</p>
-          <p className="text-sm text-white/80">Telp: (+62) 877-6550-5935</p>
-          <p className="text-sm text-white/80">Email: bangunciptasolusi01@gmail.com</p>
-        </div>
-
-        {/* CTA */}
-        <div className="space-y-2">
-          <h4 className="font-semibold  text-sm tracking-wide mb-2">Konsultasi</h4>
-          <Link
-            href="/kontak"
-            className="inline-block outline-1 px-6 py-2 rounded-md bg-[rgb(var(--color-primary))]  font-medium hover:opacity-90 transition-all shadow-md"
-          >
-            Ajukan Konsultasi
-          </Link>
-        </div>
-
-      </div>
-
-      <div className="mt-8 text-center text-white/50 text-xs">
-        &copy; {new Date().getFullYear()} PT Bangun Cipta Solusi. Semua hak cipta dilindungi.
       </div>
     </footer>
   );
