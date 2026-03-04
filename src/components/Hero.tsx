@@ -46,7 +46,7 @@ export default function HeroSection() {
 
           {/* Micro Label */}
           <p className="text-[10.5px] md:text-[11px] tracking-[2px] uppercase font-medium text-[rgb(var(--color-white))]/70 mb-4">
-            Konsultan Teknik Independen
+            Engineering Consultant
           </p>
 
           {/* Accent Line */}
