@@ -1,39 +1,58 @@
 "use client";
 
+import { motion } from "framer-motion";
+
 export default function CTASection() {
   return (
-    <section className="relative py-8 md:py-12 overflow-hidden">
+    <section className="section-tight bg-[rgb(var(--color-surface))]">
+      <div className="container-main">
 
-      {/* Subtle Executive Background */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[rgb(var(--color-primary))]/20 via-white to-white pointer-events-none" />
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+          className="
+            border border-[rgb(var(--color-border))]
+            rounded-[var(--radius-lg)]
+            px-5 py-8
+            bg-[rgb(var(--color-soft))]
+            shadow-[var(--shadow-soft)]
+            text-center
+          "
+        >
 
-      <div className="container-main relative">
-        <div className="max-w-xl text-center mx-auto">
-
-          {/* Micro Label */}
-          <p className="text-[11px] tracking-[1.5px] uppercase text-[rgb(var(--color-primary))] font-medium mb-4">
+          {/* Label */}
+          <p className="text-[11px] tracking-[0.12em] uppercase text-[rgb(var(--color-muted))] mb-2">
             Konsultasi Proyek
           </p>
 
-          {/* Accent Line */}
-          <div className="w-12 h-[2px] bg-[rgb(var(--color-primary))] mb-6 mx-auto" />
-
-          {/* H2 */}
-          <h2 className="text-[24px] md:text-[32px] font-semibold leading-[1.3] tracking-[0.2px] mb-6">
-            Mari Wujudkan Proyek Anda Bersama Mitra Profesional
+          {/* Headline */}
+          <h2 className="text-[16px] sm:text-[18px] font-semibold mb-3 text-[rgb(var(--color-primary))]">
+            Diskusikan Kebutuhan Proyek Anda
           </h2>
 
-          {/* Paragraph */}
-          <p className="text-[14px] md:text-[15px] leading-[1.75] text-muted mb-8">
-            Tim kami siap mendukung proyek Anda sejak tahap konseptual hingga implementasi, dengan pendekatan profesional yang terukur dan akuntabel.
+          {/* Supporting Text */}
+          <p className="text-[12px] leading-[1.6] text-[rgb(var(--color-muted))] max-w-md mx-auto mb-6">
+            Tim kami siap membantu Anda merencanakan dan merealisasikan proyek
+            konstruksi secara profesional, terukur, dan sesuai regulasi yang berlaku.
           </p>
 
-          {/* CTA Button */}
-          <button className="px-8 py-3 text-[14px] md:text-[15px] font-medium rounded-md bg-[rgb(var(--color-primary))] text-[rgb(var(--color-white))] transition-all duration-300 hover:opacity-90">
-            Ajukan Konsultasi
-          </button>
+          {/* Buttons */}
+          <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
 
-        </div>
+            <a href="#contact" className="btn-primary">
+              Jadwalkan Diskusi
+            </a>
+
+            <a href="#portfolio" className="btn-outline">
+              Lihat Portofolio
+            </a>
+
+          </div>
+
+        </motion.div>
+
       </div>
     </section>
   );

@@ -2,14 +2,18 @@
 
 
 
-import SectionWrapper from "@/components/SectionWrapper";
+
 import AboutHeroSection from "@/components/Tentang/AboutHeroSection";
-import BackgroundSection from "@/components/Tentang/BackgroundSection";
+
+import CompanyPositioningSection from "@/components/Tentang/CompanyPositioningSection";
 import CTASection from "@/components/Tentang/CTASection";
-import GovernanceSection from "@/components/Tentang/GovernanceSection";
-import GrowthVisionSection from "@/components/Tentang/GrowthVisionSection";
-import MultidisciplinarySection from "@/components/Tentang/MultidisciplinarySection";
-import PhilosophySection from "@/components/Tentang/PhilosophySection";
+
+import GrowthDirectionSection from "@/components/Tentang/GrowthDirectionSection";
+
+import LegalComplianceSection from "@/components/Tentang/LegalComplianceSection";
+
+
+import VisionValuesSection from "@/components/Tentang/VisionValuesSection";
 
 const LandingPage: React.FC = () => {
   
@@ -21,16 +25,15 @@ const LandingPage: React.FC = () => {
     
        <AboutHeroSection />
 
-        <BackgroundSection />
+        <CompanyPositioningSection />
 
-        <PhilosophySection/>
+        <VisionValuesSection/>
         
-        <MultidisciplinarySection/>
+        <LegalComplianceSection/>
 
-        <GovernanceSection/>
+        <GrowthDirectionSection/>
 
-        <GrowthVisionSection/>
-
+      
         <CTASection/>
         
 

@@ -1,6 +1,17 @@
+
 export const menuItems = [
   { label: "Home", href: "/" },
-  { label: "Tentang Kami", href: "/tentang" },
+  { 
+    label: "Tentang Kami", 
+    href: "/tentang",
+    children: [
+        { label: "Sinergi Profesionalisme", href: "/tentang#sinergi"},
+        { label: "Visi Perusahaan", href: "/tentang#visi"},
+        { label: "Legalitas Perusahaan", href: "/tentang#legalitas"},
+        { label: "Arah Pertumbuhan", href: "/tentang#arah"},
+    ]
+},
+
   {
     label: "Layanan",
     href: "/layanan",

@@ -1,44 +1,75 @@
 "use client";
 
-export default function AboutHeroSection() {
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { cloudinaryImage } from "@/lib/cloudinaryImage";
+
+export default function HeroAboutSection() {
+  const heroImage =
+    "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772197330/Masjid-al-jabbar2_ptlpcm.jpg"; // ganti dengan foto tim meeting / blueprint
+
   return (
-    <section className="relative py-10 md:py-20 overflow-hidden">
+    <section className="relative min-h-[360px] md:min-h-[460px] flex items-center overflow-hidden bg-[rgb(var(--color-bg))]">
 
-      {/* Subtle Executive Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--color-secondary))]/15 via-white to-white pointer-events-none" />
+      {/* Background */}
+      <div className="absolute inset-0">
+        <Image
+          src={cloudinaryImage(heroImage, "banner")}
+          alt="Tim profesional berdiskusi proyek arsitektur"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      </div>
 
-      <div className="container-main relative">
+      {/* Clean Overlay (lebih ringan & premium) */}
+      <div className="absolute inset-0 bg-[rgb(var(--color-dark))]/45" />
 
-        <div className="max-w-xl">
+      {/* Subtle Bottom Fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-[rgb(var(--color-bg))]" />
 
+      <div className="container-main relative z-10 py-12 md:py-16">
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="max-w-[520px]"
+        >
           {/* Micro Label */}
-          <p className="text-[11px] tracking-[1.5px] uppercase text-[rgb(var(--color-primary))] font-medium mb-4">
+          <p className="text-[9px] tracking-[1.6px] uppercase font-medium text-[rgb(var(--color-white))]/70 mb-3">
             Tentang Perusahaan
           </p>
 
-          {/* Accent Line */}
-          <div className="w-12 h-[2px] bg-[rgb(var(--color-primary))] mb-6" />
-
-          {/* H1 */}
-          <h1 className="text-[24px] md:text-[32px] font-semibold leading-[1.3] tracking-[0.2px] mb-6">
+          {/* Headline */}
+          <h1 className="
+            text-[18px] 
+            md:text-[26px] 
+            font-semibold 
+            leading-[1.35] 
+            tracking-[0.2px] 
+            text-[rgb(var(--color-white))] 
+            mb-4
+          ">
             Membangun Fondasi
-            <span className="block text-[rgb(var(--color-primary))]">
+            <span className="block">
               Keunggulan Profesional
             </span>
           </h1>
 
-          {/* Paragraph 1 */}
-          <p className="text-[14px] md:text-[15px] leading-[1.75] text-muted mb-4">
-            PT. Bangun Cipta Solusi (BANGUN.IN) adalah perusahaan konsultan teknik independen yang mengintegrasikan arsitektur, rekayasa teknik, dan manajemen konstruksi dalam satu sistem kerja yang terstruktur, akuntabel, dan berorientasi pada kualitas hasil.
+          {/* Subheadline */}
+          <p className="
+            text-[11px] 
+            md:text-[13px] 
+            leading-[1.65] 
+            text-[rgb(var(--color-white))]/80
+          ">
+            Integrasi arsitektur, rekayasa teknik, dan manajemen konstruksi 
+            dalam satu sistem kerja profesional dan terstruktur.
           </p>
 
-          {/* Paragraph 2 */}
-          <p className="text-[14px] md:text-[15px] leading-[1.75] text-muted">
-            Kami hadir sebagai mitra strategis bagi pemerintah, institusi, dan sektor swasta dalam merancang solusi pembangunan yang tidak hanya tepat secara teknis, tetapi juga selaras dengan kebutuhan jangka panjang dan prinsip keberlanjutan.
-          </p>
-
-        </div>
-
+        </motion.div>
       </div>
     </section>
   );
