@@ -11,6 +11,7 @@ export function cloudinaryImage(
     | "portrait"
     | "banner"
     | "icon"
+    | "preview"
 ) {
   const map = {
     lcp: "f_auto,q_auto,dpr_auto,w_1200,h_900,c_fill,g_auto",
@@ -23,6 +24,7 @@ export function cloudinaryImage(
     banner: "f_auto,q_auto,dpr_auto,w_1400,h_720,c_fill,g_auto",
     sponsor: "f_auto,q_auto,dpr_auto,h_140,c_limit",
     icon: "f_auto,q_auto,dpr_auto,w_14,h_14,c_limit",
+    preview: "f_auto,q_auto,dpr_auto,w_360,h_240,c_fill,g_auto",
   };
 
   return src.replace("/upload/", `/upload/${map[type]}/`);

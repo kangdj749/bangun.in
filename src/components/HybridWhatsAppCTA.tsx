@@ -10,11 +10,11 @@ export default function WhatsAppCTA() {
 
   useEffect(() => {
     const defaultMessage = `
-Assalamu'alaikum 🌙
+Assalamu'alaikum,
 
-Saya ingin berkonsultasi dengan PT Bangun Cipta Solusi (BANGUN.IN).
+Saya ingin berkonsultasi terkait layanan PT Bangun Cipta Solusi (BANGUN.IN).
 
-Mohon informasi lebih lanjut 🙏
+Mohon informasi lebih lanjut.
     `.trim();
 
     setWaLink(
@@ -30,34 +30,24 @@ Mohon informasi lebih lanjut 🙏
     <>
       {/* ================= MOBILE STICKY ================= */}
       <motion.div
-        initial={{ y: 60, opacity: 0 }}
+        initial={{ y: 40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        transition={{ duration: 0.5 }}
         className="fixed bottom-0 left-0 right-0 z-50 md:hidden"
       >
         <div
           className="
-            relative
-            bg-[rgb(var(--color-white))]
+            bg-[rgb(var(--color-surface))]
             border-t
-            border-[rgb(var(--color-secondary))]/30
-            px-4 py-3
-            rounded-t-2xl
-            shadow-[0_-15px_40px_-15px_rgba(var(--color-dark),0.4)]
-            flex items-center justify-between
+            border-[rgb(var(--color-secondary))]/20
+            px-4
+            py-2.5
+            flex
+            items-center
+            justify-between
           "
         >
-          {/* Accent Line */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-[2px] bg-[rgb(var(--color-primary))]/60" />
-
-          <span
-            className="
-              text-[11.5px]
-              font-medium
-              tracking-[0.6px]
-              text-[rgb(var(--color-primary))]
-            "
-          >
+          <span className="text-[11px] font-medium text-[rgb(var(--color-text))]">
             Konsultasi Profesional
           </span>
 
@@ -66,17 +56,22 @@ Mohon informasi lebih lanjut 🙏
             target="_blank"
             rel="noopener noreferrer"
             className="
-              px-5 py-2
-              text-[12.5px]
-              font-semibold
-              rounded-lg
+              inline-flex
+              items-center
+              gap-1.5
+              px-4
+              py-1.5
+              text-[10.5px]
+              font-medium
+              rounded-[var(--radius-sm)]
               bg-[rgb(var(--color-primary))]
               text-[rgb(var(--color-white))]
-              transition-all duration-300
-              hover:translate-y-[-2px]
-              hover:shadow-[0_10px_25px_-5px_rgba(var(--color-primary),0.6)]
+              transition-all
+              duration-300
+              hover:bg-[rgb(var(--color-primary))]/90
             "
           >
+            <MessageCircle className="w-3.5 h-3.5" />
             WhatsApp
           </a>
         </div>
@@ -84,64 +79,37 @@ Mohon informasi lebih lanjut 🙏
 
       {/* ================= DESKTOP FLOAT ================= */}
       <motion.div
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.6, type: "spring" }}
-        className="hidden md:flex fixed bottom-8 right-8 z-50 items-center gap-4"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="hidden md:flex fixed bottom-6 right-6 z-50"
       >
-        {/* Floating Label */}
-        <div
-          className="
-            bg-[rgb(var(--color-white))]
-            text-[rgb(var(--color-primary))]
-            text-[11.5px]
-            font-medium
-            px-4 py-2
-            rounded-full
-            border
-            border-[rgb(var(--color-secondary))]/25
-            shadow-[0_15px_35px_-15px_rgba(var(--color-dark),0.35)]
-          "
-        >
-          Hubungi Konsultan
-        </div>
-
-        {/* Floating Button */}
-        <motion.a
+        <a
           href={waLink}
           target="_blank"
           rel="noopener noreferrer"
-          whileHover={{ scale: 1.08 }}
-          className="relative"
+          className="
+            group
+            inline-flex
+            items-center
+            gap-2
+            px-4
+            py-2
+            text-[11px]
+            font-medium
+            rounded-[var(--radius-sm)]
+            bg-[rgb(var(--color-primary))]
+            text-[rgb(var(--color-white))]
+            border
+            border-[rgb(var(--color-primary))]/30
+            transition-all
+            duration-300
+            hover:-translate-y-[1px]
+          "
         >
-          {/* Soft Glow Halo */}
-          <span
-            className="
-              absolute inset-0 rounded-full
-              bg-[rgb(var(--color-primary))]/30
-              blur-2xl
-              opacity-70
-            "
-          />
-
-          <div
-            className="
-              relative
-              bg-[rgb(var(--color-primary))]
-              text-[rgb(var(--color-white))]
-              w-16 h-16
-              rounded-full
-              flex items-center justify-center
-              border
-              border-[rgb(var(--color-primary))]/40
-              shadow-[0_15px_40px_-15px_rgba(var(--color-dark),0.5)]
-              transition-all duration-300
-              hover:shadow-[0_20px_50px_-10px_rgba(var(--color-primary),0.6)]
-            "
-          >
-            <MessageCircle className="w-7 h-7" />
-          </div>
-        </motion.a>
+          <MessageCircle className="w-4 h-4" />
+          <span>Hubungi Konsultan</span>
+        </a>
       </motion.div>
     </>
   );

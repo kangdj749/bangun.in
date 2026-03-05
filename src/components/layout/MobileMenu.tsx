@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { FiChevronRight, FiX } from "react-icons/fi";
 import { menuItems } from "@/data/menuItems";
 
@@ -11,100 +12,100 @@ interface Props {
 }
 
 export default function MobileMenu({ isOpen, onClose }: Props) {
+  const pathname = usePathname();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleSubmenu = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  // Auto close on route change
+  useEffect(() => {
+    onClose();
+  }, [pathname, onClose]);
+
   return (
     <>
       {/* Overlay */}
       <div
         onClick={onClose}
-        className={`fixed inset-0 z-40 transition-all duration-300 ${
-          isOpen
-            ? "opacity-100 visible bg-black/30"
-            : "opacity-0 invisible"
-        }`}
+        className={`
+          fixed inset-0 z-40
+          bg-[rgb(var(--color-dark))]/25
+          transition-opacity duration-200
+          ${isOpen ? "opacity-100 visible" : "opacity-0 invisible"}
+        `}
       />
 
-      {/* Floating Right Wrapper */}
-      <div
-        className={`fixed top-20 right-4 z-50 transition-all duration-300 ease-out ${
-          isOpen
-            ? "translate-x-0 opacity-100"
-            : "translate-x-8 opacity-0 pointer-events-none"
-        }`}
+      {/* Drawer */}
+      <aside
+        className={`
+          fixed top-0 right-0 z-50 h-full w-[280px]
+          bg-[rgb(var(--color-surface))]
+          border-l border-[rgb(var(--color-secondary))]/20
+          flex flex-col
+          transition-transform duration-300 ease-out
+          ${isOpen ? "translate-x-0" : "translate-x-full"}
+        `}
       >
-        {/* Card Container */}
-        <aside
+        {/* Header */}
+        <div
           className="
-            w-[255px]
-            rounded-2xl
-            shadow-[0_20px_60px_-15px_rgba(0,0,0,0.25)]
-            border
-            border-[rgb(var(--color-secondary))]/20
-            bg-[rgb(var(--color-white))]
-            overflow-hidden
+            flex items-center justify-between
+            h-[56px]
+            px-4
+            border-b border-[rgb(var(--color-secondary))]/20
           "
         >
-          {/* Header */}
-          <div
+          <span className="text-[11px] font-semibold tracking-[1px] uppercase text-[rgb(var(--color-text))]">
+            Menu
+          </span>
+
+          <button
+            onClick={onClose}
             className="
-              flex items-center justify-between
-              px-4 py-3
-              border-b
-              border-[rgb(var(--color-secondary))]/20
+              p-1.5
+              text-[rgb(var(--color-text))]
+              hover:text-[rgb(var(--color-primary))]
+              transition-colors duration-200
             "
           >
-            <span
-              className="
-                text-[11.5px]
-                tracking-[1.2px]
-                uppercase
-                font-semibold
-                text-[rgb(var(--color-primary))]
-              "
-            >
-              Navigasi
-            </span>
+            <FiX size={16} />
+          </button>
+        </div>
 
-            <button
-              onClick={onClose}
-              className="
-                p-1.5
-                rounded-md
-                hover:bg-[rgb(var(--color-secondary))]/10
-                transition-colors
-              "
-            >
-              <FiX size={16} />
-            </button>
+        {/* Navigation */}
+        <nav className="flex-1 overflow-y-auto py-2">
+
+          {/* Section Label */}
+          <div className="px-4 py-1 text-[9px] tracking-[1.2px] uppercase text-[rgb(var(--color-muted))]">
+            Navigasi
           </div>
 
-          {/* Menu List */}
-          <nav className="py-2">
+          {menuItems.map((item, index) => {
+            const isActive = pathname === item.href;
 
-            {menuItems.map((item, index) => (
-              <div key={index} className="px-2">
-
-                {/* Parent */}
-                <div className="flex items-center justify-between">
+            return (
+              <div
+                key={index}
+                className="border-b border-[rgb(var(--color-secondary))]/10"
+              >
+                <div className="flex items-center justify-between px-4">
 
                   <Link
                     href={item.href}
-                    onClick={!item.children ? onClose : undefined}
-                    className="
+                    className={`
                       flex-1
-                      px-3 py-2
-                      text-[12.5px]
+                      py-2.5
+                      text-[12px]
                       font-medium
-                      text-[rgb(var(--color-primary))]
-                      rounded-lg
-                      hover:bg-[rgb(var(--color-secondary))]/10
-                      transition-all duration-200
-                    "
+                      transition-colors duration-200
+                      ${
+                        isActive
+                          ? "text-[rgb(var(--color-primary))]"
+                          : "text-[rgb(var(--color-text))]"
+                      }
+                    `}
                   >
                     {item.label}
                   </Link>
@@ -112,16 +113,12 @@ export default function MobileMenu({ isOpen, onClose }: Props) {
                   {item.children && (
                     <button
                       onClick={() => toggleSubmenu(index)}
-                      className="
-                        p-1.5 mr-1
-                        text-[rgb(var(--color-primary))]
-                        transition-all duration-300
-                      "
+                      className="py-2 text-[rgb(var(--color-text))]"
                     >
                       <FiChevronRight
                         size={14}
                         className={`
-                          transition-transform duration-300 ease-out
+                          transition-transform duration-200
                           ${openIndex === index ? "rotate-90" : ""}
                         `}
                       />
@@ -133,54 +130,62 @@ export default function MobileMenu({ isOpen, onClose }: Props) {
                 {item.children && (
                   <div
                     className={`
-                      overflow-hidden
-                      transition-all duration-300 ease-in-out
+                      overflow-hidden transition-all duration-200
                       ${
                         openIndex === index
-                          ? "max-h-40 opacity-100 mt-1"
+                          ? "max-h-48 opacity-100"
                           : "max-h-0 opacity-0"
                       }
                     `}
                   >
-                    <div
-                      className="
-                        ml-4
-                        border-l
-                        border-[rgb(var(--color-secondary))]/30
-                        pl-3
-                        py-1
-                        space-y-1
-                      "
-                    >
-                      {item.children.map((child, childIndex) => (
-                        <Link
-                          key={childIndex}
-                          href={child.href}
-                          onClick={onClose}
-                          className="
-                            block
-                            px-2 py-1.5
-                            text-[12px]
-                            text-[rgb(var(--color-primary))]/80
-                            rounded-md
-                            hover:text-[rgb(var(--color-primary))]
-                            hover:bg-[rgb(var(--color-secondary))]/10
-                            transition-all duration-200
-                          "
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
+                    <div className="pl-6 pr-4 pb-2 space-y-1">
+                      {item.children.map((child, childIndex) => {
+                        const isChildActive = pathname === child.href;
+
+                        return (
+                          <Link
+                            key={childIndex}
+                            href={child.href}
+                            className={`
+                              block py-1.5 text-[11.5px]
+                              transition-colors duration-200
+                              ${
+                                isChildActive
+                                  ? "text-[rgb(var(--color-primary))]"
+                                  : "text-[rgb(var(--color-text))]/80"
+                              }
+                            `}
+                          >
+                            {child.label}
+                          </Link>
+                        );
+                      })}
                     </div>
                   </div>
                 )}
-
               </div>
-            ))}
+            );
+          })}
+        </nav>
 
-          </nav>
-        </aside>
-      </div>
+        {/* Drawer Footer */}
+        <div
+          className="
+            border-t border-[rgb(var(--color-secondary))]/20
+            px-4 py-3
+            text-[10.5px]
+            text-[rgb(var(--color-muted))]
+            leading-[1.6]
+          "
+        >
+          <div className="font-medium text-[rgb(var(--color-text))] mb-1">
+            PT Bangun Cipta Solusi
+          </div>
+          Jakarta, Indonesia
+          <br />
+          bangunciptasolusi01@gmail.com
+        </div>
+      </aside>
     </>
   );
 }

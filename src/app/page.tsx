@@ -26,13 +26,13 @@ const LandingPage: React.FC = () => {
         <Hero />
         <VisualServicesPreview/>  
         
-         <SectionWrapper>
-          <PortfolioPreview/>  
-         </SectionWrapper>
 
-         <SectionWrapper>
+          <PortfolioPreview/>  
+     
+
+       
            <TrustStrip />
-         </SectionWrapper>      
+            
 
          <SectionWrapper withDivider={false}>
          <FinalCTASection/>

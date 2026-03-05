@@ -1,10 +1,8 @@
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import type { Metadata } from "next";
-
-
+import ThemeProvider from "@/components/theme-provider";
 import Footer from "@/components/Footer";
-import Navbarbgn from "@/components/Navbarbgn";
 import Navbar from "@/components/layout/Navbar";
 
 export const metadata: Metadata = {
@@ -28,9 +26,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="font-sans text-gray-900 bg-white">
+       <ThemeProvider>
         <Navbar />
         <main className="pt-20">{children}</main> {/* pt-20 supaya nggak tertutup navbar fixed */}
         <Footer />
+       </ThemeProvider> 
       </body>
     </html>
   );

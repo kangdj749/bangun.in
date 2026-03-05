@@ -9,27 +9,33 @@ export default function VisualServicesPreview() {
   const services = [
     {
       title: "Penataan Ruang",
-      description: "Urban planning visioner berbasis regulasi & data.",
-      image:
-        "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772352740/SECTION-250-ANAK-YATIM-LANDSCAPE_tocttp.png",
+      description: "Perencanaan tata ruang berbasis regulasi & data spasial.",
+      image: "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772352740/SECTION-250-ANAK-YATIM-LANDSCAPE_tocttp.png",
     },
     {
-      title: "Arsitektur",
-      description: "Desain fungsional, kontekstual, dan berkelanjutan.",
-      image:
-        "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772352740/SECTION-250-ANAK-YATIM-LANDSCAPE_tocttp.png",
+      title: "Perencanaan Arsitektur",
+      description: "Desain kontekstual, fungsional, dan berkelanjutan.",
+      image: "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772352740/SECTION-250-ANAK-YATIM-LANDSCAPE_tocttp.png",
     },
     {
       title: "Rekayasa Teknik",
-      description: "Solusi struktur, infrastruktur, dan MEP komprehensif.",
-      image:
-        "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772352740/SECTION-250-ANAK-YATIM-LANDSCAPE_tocttp.png",
+      description: "Solusi struktur, infrastruktur & MEP terintegrasi.",
+      image: "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772352740/SECTION-250-ANAK-YATIM-LANDSCAPE_tocttp.png",
     },
     {
-      title: "Topografi & Geoteknik",
-      description: "Data lapangan presisi sebagai fondasi pembangunan.",
-      image:
-        "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772352740/SECTION-250-ANAK-YATIM-LANDSCAPE_tocttp.png",
+      title: "Konsultasi Lingkungan",
+      description: "Kajian AMDAL & dokumen lingkungan komprehensif.",
+      image: "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772352740/SECTION-250-ANAK-YATIM-LANDSCAPE_tocttp.png",
+    },
+    {
+      title: "Jasa Bantu Teknik",
+      description: "Dukungan teknis untuk pelaksanaan proyek.",
+      image: "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772352740/SECTION-250-ANAK-YATIM-LANDSCAPE_tocttp.png",
+    },
+    {
+      title: "Survei & Telematika",
+      description: "Pengukuran presisi & integrasi data geospasial.",
+      image: "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772352740/SECTION-250-ANAK-YATIM-LANDSCAPE_tocttp.png",
     },
   ];
 
@@ -38,87 +44,99 @@ export default function VisualServicesPreview() {
       <div className="container-main">
 
         {/* Header */}
-        <div className="mb-10 md:mb-14 max-w-md">
-          <p className="text-[10px] tracking-[2px] uppercase font-medium text-[rgb(var(--color-primary))]/70 mb-3">
-            Layanan Profesional
+        <div className="mb-8 max-w-md">
+          <p className="text-[10px] tracking-[2px] uppercase font-medium text-[rgb(var(--color-primary))]/70 mb-2">
+            Lingkup Layanan
           </p>
 
-          <div className="w-10 h-[1px] bg-[rgb(var(--color-primary))] mb-5" />
+          <div className="w-8 h-[1px] bg-[rgb(var(--color-primary))] mb-4" />
 
-          <h2 className="text-[18px] md:text-[22px] font-semibold leading-[1.35] tracking-[0.2px] text-[rgb(var(--color-text))]">
-            Solusi Terintegrasi untuk Setiap Tahapan Proyek
+          <h2 className="text-[17px] md:text-[21px] font-semibold leading-[1.35] text-[rgb(var(--color-text))]">
+            Solusi Profesional di Setiap Tahapan Proyek
           </h2>
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
 
           {services.map((service, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
+              transition={{ duration: 0.5 }}
               className="
-                relative 
-                group 
-                h-[230px] md:h-[260px]
-                overflow-hidden 
-                rounded-[var(--radius-lg)]
-                border 
-                border-[rgb(var(--color-secondary))]/20
+                group
+                relative
+                rounded-[var(--radius-md)]
+                border
+                border-[rgb(var(--color-secondary))]/15
+                bg-[rgb(var(--color-surface))]
+                overflow-hidden
+                transition-all
+                duration-500
+                hover:-translate-y-[3px]
+                hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)]
               "
             >
+              {/* Numbering */}
+              <div className="absolute top-3 left-3 text-[9px] tracking-[1.5px] font-medium text-[rgb(var(--color-primary))]/70 z-10">
+                {String(index + 1).padStart(2, "0")}
+              </div>
+
               {/* Image */}
-              <Image
-                src={cloudinaryImage(service.image, "card")}
-                alt={service.title}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-              />
+              <div className="relative h-[85px] md:h-[100px]">
+                <Image
+                  src={cloudinaryImage(service.image, "card")}
+                  alt={service.title}
+                  fill
+                  sizes="(max-width:768px) 50vw, 25vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                />
 
-              {/* Dark overlay base */}
-              <div className="absolute inset-0 bg-[rgb(var(--color-dark))]/65" />
+                {/* Subtle overlay */}
+                <div className="absolute inset-0 bg-[rgb(var(--color-dark))]/25" />
 
-              {/* Subtle primary gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[rgb(var(--color-primary))]/70 via-[rgb(var(--color-primary))]/30 to-transparent" />
+                {/* Primary gradient strip */}
+                <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[rgb(var(--color-primary))]/70 via-[rgb(var(--color-primary))] to-[rgb(var(--color-primary))]/70" />
+              </div>
 
               {/* Content */}
-              <div className="absolute bottom-0 p-5 md:p-6 text-[rgb(var(--color-white))]">
-                <h3 className="text-[13.5px] md:text-[15px] font-semibold tracking-[0.3px] mb-1.5">
+              <div className="p-3 md:p-4">
+
+                <h3 className="text-[12px] md:text-[13px] font-semibold leading-[1.4] text-[rgb(var(--color-text))]">
                   {service.title}
                 </h3>
 
-                <p className="text-[11.5px] md:text-[12.5px] leading-[1.6] text-[rgb(var(--color-white))]/85">
+                {/* Hidden on mobile */}
+                <p className="hidden md:block text-[11px] leading-[1.6] text-[rgb(var(--color-text))]/70 mt-1.5">
                   {service.description}
                 </p>
               </div>
 
-              {/* Subtle hover depth */}
-              <div className="absolute inset-0 border border-transparent group-hover:border-[rgb(var(--color-primary))]/40 transition-all duration-500 rounded-[var(--radius-lg)]" />
             </motion.div>
           ))}
         </div>
 
         {/* CTA */}
-        <div className="mt-12 md:mt-14 text-center">
+        <div className="mt-10 text-center">
           <Link
             href="/layanan"
             className="
               inline-block
-              text-[11.5px]
-              font-medium
+              text-[11px]
               tracking-[1.4px]
               uppercase
+              font-medium
               text-[rgb(var(--color-primary))]
               border-b
               border-[rgb(var(--color-primary))]/40
               pb-1
-              transition-all duration-300
-              hover:border-[rgb(var(--color-primary))]
+              transition-all
+              duration-300
               hover:tracking-[1.8px]
+              hover:border-[rgb(var(--color-primary))]
             "
           >
             Jelajahi Seluruh Layanan
