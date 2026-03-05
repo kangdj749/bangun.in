@@ -7,26 +7,29 @@
 :root {
 
   /* ================================
-     BRAND COLORS (FIXED)
+     BRAND COLORS
   ================================= */
 
-  --color-primary: 128 0 0;        /* #800000 */
-  --color-secondary: 192 192 192;  /* #c0c0c0 */
-  --color-white: 255 255 255;      /* #ffffff */
-  --color-black: 0 0 0;            /* #000000 */
+  --color-primary: 128 0 0;        /* Maroon */
+  --color-secondary: 210 210 210;  /* Neutral gray */
+  --color-white: 255 255 255;
+  --color-black: 0 0 0;
 
   /* ================================
-     LIGHT SYSTEM
+     NEUTRAL SCALE
   ================================= */
 
   --color-bg: 255 255 255;         /* Main background */
-  --color-surface: 250 250 250;    /* Card surface */
-  --color-elevated: 245 245 245;   /* Hover surface */
-  --color-dark: 240 240 240;       /* Soft section background */
+  --color-surface: 248 248 248;    /* Card surface */
+  --color-elevated: 242 242 242;   /* Hover */
+  --color-soft: 235 235 235;       /* Section soft */
 
-  --color-text: 0 0 0;             /* Primary text */
-  --color-muted: 90 90 90;         /* Secondary text */
-  --color-subtle: 130 130 130;     /* Fine caption */
+  --color-dark: 24 24 27;          /* Real dark (untuk overlay) */
+
+  --color-text: 24 24 27;          /* Primary text (soft black) */
+  --color-muted: 90 90 95;         /* Secondary text */
+  --color-subtle: 130 130 135;     /* Fine caption */
+
 
   /* ================================
      LAYOUT SYSTEM
