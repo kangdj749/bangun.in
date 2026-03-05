@@ -19,6 +19,8 @@ export const menuItems = [
       { label: "Penataan Ruang", href: "/layanan#penataan-ruang" },
       { label: "Arsitektur", href: "/layanan#arsitektur" },
       { label: "Rekayasa Teknik", href: "/layanan#rekayasa" },
+      { label: "Topografi & Geoteknik", href: "/layanan#topogeo" },
+      { label: "Sistem Kerja Profesional", href: "/layanan#sistem-kerja" },
     ],
   },
   { label: "Kontak", href: "/kontak" },

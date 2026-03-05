@@ -2,45 +2,46 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import {
-  FiLayers,
-  FiDroplet,
-  FiTruck,
-  FiTool
-} from "react-icons/fi";
+import { FiMap, FiActivity, FiTool, FiBarChart2 } from "react-icons/fi";
 
 import { cloudinaryImage } from "@/lib/cloudinaryImage";
 
-export default function EngineeringSection() {
+export default function TopographyGeotechSection() {
 
   const heroImage =
     "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772197330/Masjid-al-jabbar2_ptlpcm.jpg";
 
+  const gallery = [
+    "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772197330/Masjid-al-jabbar2_ptlpcm.jpg",
+    "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772197330/Masjid-al-jabbar2_ptlpcm.jpg",
+    "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772197330/Masjid-al-jabbar2_ptlpcm.jpg",
+  ];
+
   const services = [
     {
-      title: "Pondasi & Struktur",
-      desc: "Perencanaan struktur bangunan yang aman, efisien, dan sesuai standar rekayasa teknik.",
-      icon: <FiLayers size={20} />,
+      title: "Survey Topografi",
+      desc: "Pengukuran kondisi kontur dan elevasi lahan sebagai dasar perencanaan teknis.",
+      icon: <FiMap size={18} />,
     },
     {
-      title: "Water Engineering",
-      desc: "Perancangan sistem sumber daya air, drainase, dan pengelolaan lingkungan berkelanjutan.",
-      icon: <FiDroplet size={20} />,
+      title: "Soil Investigation",
+      desc: "Analisis karakteristik tanah untuk menentukan metode fondasi yang tepat.",
+      icon: <FiActivity size={18} />,
     },
     {
-      title: "Transportasi & Infrastruktur",
-      desc: "Perencanaan jalan, kawasan, dan sistem infrastruktur untuk konektivitas wilayah.",
-      icon: <FiTruck size={20} />,
+      title: "Sondir Test",
+      desc: "Pengujian penetrasi tanah untuk mengetahui daya dukung tanah secara akurat.",
+      icon: <FiTool size={18} />,
     },
     {
-      title: "Mechanical Electrical Plumbing",
-      desc: "Integrasi sistem mekanikal, elektrikal, dan plumbing untuk efisiensi operasional bangunan.",
-      icon: <FiTool size={20} />,
+      title: "Analisis Geoteknik",
+      desc: "Evaluasi stabilitas tanah dan rekomendasi desain fondasi secara profesional.",
+      icon: <FiBarChart2 size={18} />,
     },
   ];
 
   return (
-    <section id="rekayasa" className="section-tight bg-[rgb(var(--color-soft))]">
+    <section id="topogeo" className="section-tight bg-[rgb(var(--color-bg))]">
 
       <div className="container-main">
 
@@ -53,16 +54,17 @@ export default function EngineeringSection() {
           className="mb-8"
         >
           <h2 className="h2 text-[rgb(var(--color-primary))] mb-3">
-            Rekayasa Teknik
+            Topografi & Geoteknik
           </h2>
 
           <p className="text-[12px] leading-[1.6] text-[rgb(var(--color-muted))] max-w-[520px]">
-            Layanan rekayasa teknik untuk memastikan setiap proyek
-            dirancang secara struktural, fungsional, dan berkelanjutan.
+            Investigasi kondisi lahan dan struktur tanah untuk memastikan
+            setiap perencanaan konstruksi memiliki dasar teknis yang akurat,
+            aman, dan dapat dipertanggungjawabkan.
           </p>
         </motion.div>
 
-        {/* Hero Engineering Image */}
+        {/* Hero Image */}
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -83,7 +85,7 @@ export default function EngineeringSection() {
         >
           <Image
             src={cloudinaryImage(heroImage, "banner")}
-            alt="Rekayasa Teknik"
+            alt="Topografi dan Geoteknik"
             fill
             sizes="100vw"
             className="object-cover"
@@ -92,8 +94,8 @@ export default function EngineeringSection() {
           <div className="absolute inset-0 bg-[rgb(var(--color-dark))]/20" />
         </motion.div>
 
-        {/* Engineering Services */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        {/* Services */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-10">
 
           {services.map((service, index) => (
             <motion.div
@@ -103,7 +105,6 @@ export default function EngineeringSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.06 }}
               className="
-                group
                 bg-[rgb(var(--color-surface))]
                 border
                 border-[rgb(var(--color-border))]
@@ -118,8 +119,8 @@ export default function EngineeringSection() {
 
               {/* Icon */}
               <div className="
-                w-[36px]
-                h-[36px]
+                w-[34px]
+                h-[34px]
                 flex
                 items-center
                 justify-center
@@ -131,12 +132,10 @@ export default function EngineeringSection() {
                 {service.icon}
               </div>
 
-              {/* Title */}
               <h3 className="text-[12.5px] font-semibold text-[rgb(var(--color-text))] mb-1">
                 {service.title}
               </h3>
 
-              {/* Description */}
               <p className="text-[11px] leading-[1.55] text-[rgb(var(--color-muted))]">
                 {service.desc}
               </p>
@@ -146,7 +145,41 @@ export default function EngineeringSection() {
 
         </div>
 
+        {/* Field Work Gallery */}
+        <div className="grid grid-cols-3 gap-3">
+
+          {gallery.map((img, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.96 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.06 }}
+              className="
+                relative
+                h-[90px]
+                md:h-[120px]
+                rounded-[var(--radius-md)]
+                overflow-hidden
+                border
+                border-[rgb(var(--color-border))]
+                shadow-[var(--shadow-sm)]
+              "
+            >
+              <Image
+                src={cloudinaryImage(img, "card")}
+                alt="Field Work"
+                fill
+                sizes="33vw"
+                className="object-cover"
+              />
+            </motion.div>
+          ))}
+
+        </div>
+
       </div>
+
     </section>
   );
 }

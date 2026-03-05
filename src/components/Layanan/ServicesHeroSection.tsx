@@ -1,46 +1,61 @@
 "use client";
 
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { cloudinaryImage } from "@/lib/cloudinaryImage";
+
 export default function ServicesHeroSection() {
+  const heroImage =
+    "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772197330/Masjid-al-jabbar2_ptlpcm.jpg";
+
   return (
-    <section className="relative py-10 md:py-20 overflow-hidden">
+    <section className="relative overflow-hidden bg-[rgb(var(--color-bg))]">
 
-      {/* Subtle Executive Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--color-secondary))]/15 via-white to-white pointer-events-none" />
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <Image
+          src={cloudinaryImage(heroImage, "banner")}
+          alt="Layanan arsitektur dan rekayasa teknik"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      </div>
 
-      <div className="container-main relative">
+      {/* Light overlay */}
+      <div className="absolute inset-0 bg-[rgb(var(--color-dark))]/55" />
 
-        <div className="max-w-xl">
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-[rgb(var(--color-bg))]" />
 
-          {/* Micro Label */}
-          <p className="text-[11px] tracking-[1.5px] uppercase text-[rgb(var(--color-primary))] font-medium mb-4">
-            Layanan Profesional
+      <div className="container-main relative z-10 py-16 md:py-24">
+
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="max-w-[520px]"
+        >
+
+          {/* Micro label */}
+          <p className="text-[10px] tracking-[0.16em] uppercase text-[rgb(var(--color-white))]/70 mb-3">
+            Professional Services
           </p>
 
-          {/* Accent Line */}
-          <div className="w-12 h-[2px] bg-[rgb(var(--color-primary))] mb-6" />
-
-          {/* H1 */}
-          <h1 className="text-[24px] md:text-[32px] font-semibold leading-[1.3] tracking-[0.2px] mb-6">
-            Lingkup Layanan Profesional
-            <span className="block text-[rgb(var(--color-primary))]">
-              Terintegrasi
-            </span>
+          {/* Headline */}
+          <h1 className="text-[20px] sm:text-[24px] md:text-[28px] font-semibold leading-[1.32] text-[rgb(var(--color-white))] mb-4">
+            Lingkup Layanan Profesional Terintegrasi
           </h1>
 
-          {/* Paragraph */}
-          <p className="text-[14px] md:text-[15px] leading-[1.75] text-muted mb-4">
-            Sebagai perusahaan konsultan teknik independen, BANGUN.IN menghadirkan layanan terintegrasi yang mencakup penataan ruang, arsitektur, rekayasa teknik, manajemen konstruksi, serta investigasi lahan dan geoteknik.
+          {/* Supporting text */}
+          <p className="text-[12px] md:text-[13px] leading-[1.6] text-[rgb(var(--color-white))]/80 max-w-[440px]">
+            Layanan konsultasi arsitektur, rekayasa teknik, dan perencanaan
+            wilayah yang dirancang untuk mendukung pembangunan berkelanjutan
+            melalui pendekatan profesional dan terstruktur.
           </p>
 
-          <p className="text-[14px] md:text-[15px] leading-[1.75] text-muted mb-4">
-            Setiap layanan dirancang dalam satu sistem kerja yang terstruktur dan akuntabel, memastikan setiap proyek berjalan dengan pendekatan teknis yang presisi, efisien, serta selaras dengan kebutuhan jangka panjang pemilik proyek.
-          </p>
-
-          <p className="text-[14px] md:text-[15px] leading-[1.75] text-muted">
-            Kami siap melayani pekerjaan di seluruh wilayah Indonesia dengan standar profesional yang konsisten.
-          </p>
-
-        </div>
+        </motion.div>
 
       </div>
     </section>

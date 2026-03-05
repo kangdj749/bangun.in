@@ -2,47 +2,112 @@
 
 export default function ContactInfoSection() {
   return (
-    <section className="py-10 md:py-16">
+    <section className="section-tight">
+
       <div className="container-main">
 
-        <div className="max-w-xl mb-10">
-          <p className="text-[11px] tracking-[1.5px] uppercase text-[rgb(var(--color-primary))] font-medium mb-4">
+        {/* Section Header */}
+        <div className="max-w-[520px] mb-8">
+
+          <p
+            className="
+            text-[10px]
+            tracking-[1.6px]
+            uppercase
+            font-medium
+            text-[rgb(var(--color-primary))]
+            mb-3
+          "
+          >
             Informasi Perusahaan
           </p>
-          <div className="w-12 h-[2px] bg-[rgb(var(--color-primary))] mb-6" />
-          <h2 className="text-[20px] md:text-[26px] font-semibold leading-[1.35]">
-            Informasi Perusahaan
+
+          <div className="w-10 h-[2px] bg-[rgb(var(--color-primary))] mb-4" />
+
+          <h2
+            className="
+            text-[18px]
+            sm:text-[20px]
+            font-semibold
+            leading-[1.35]
+            text-[rgb(var(--color-text))]
+          "
+          >
+            Detail Kontak & Identitas Perusahaan
           </h2>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-8 text-[14px] md:text-[15px] leading-[1.75] text-muted">
-
-          <div>
-            <p className="font-medium text-black mb-1">Nama Perusahaan</p>
-            <p className="mb-4">PT. Bangun Cipta Solusi</p>
-
-            <p className="font-medium text-black mb-1">Status</p>
-            <p>Kantor Pusat</p>
-          </div>
-
-          <div>
-            <p className="font-medium text-black mb-1">Alamat</p>
-            <p className="mb-4">
-              Rukan Graha Kencana, Blok A<br />
-              Jl. Perjuangan No. 88 RT. 15/RW.10<br />
-              Kel. Kebon Jeruk, Kec. Kebon Jeruk<br />
-              Jakarta Barat 11530
-            </p>
-
-            <p className="font-medium text-black mb-1">Telepon / WhatsApp</p>
-            <p className="mb-4">(+62) 877 6550 5935</p>
-
-            <p className="font-medium text-black mb-1">Email</p>
-            <p>bangunciptasolusi01@gmail.com</p>
-          </div>
 
         </div>
+
+        {/* Info Grid */}
+        <div
+          className="
+          grid
+          gap-6
+          md:grid-cols-2
+          text-[12.5px]
+          leading-[1.7]
+          text-[rgb(var(--color-muted))]
+        "
+        >
+
+          {/* Company Info */}
+          <div className="space-y-4">
+
+            <div>
+              <p className="text-[11px] font-medium text-[rgb(var(--color-text))] mb-1">
+                Nama Perusahaan
+              </p>
+              <p>PT. Bangun Cipta Solusi</p>
+            </div>
+
+            <div>
+              <p className="text-[11px] font-medium text-[rgb(var(--color-text))] mb-1">
+                Status
+              </p>
+              <p>Kantor Pusat</p>
+            </div>
+
+          </div>
+
+          {/* Address & Contact */}
+          <div className="space-y-4">
+
+            <div>
+              <p className="text-[11px] font-medium text-[rgb(var(--color-text))] mb-1">
+                Alamat Kantor
+              </p>
+
+              <p>
+                Rukan Graha Kencana, Blok A
+                <br />
+                Jl. Perjuangan No. 88 RT.15/RW.10
+                <br />
+                Kel. Kebon Jeruk, Kec. Kebon Jeruk
+                <br />
+                Jakarta Barat 11530
+              </p>
+            </div>
+
+            <div>
+              <p className="text-[11px] font-medium text-[rgb(var(--color-text))] mb-1">
+                Telepon / WhatsApp
+              </p>
+              <p>(+62) 877 6550 5935</p>
+            </div>
+
+            <div>
+              <p className="text-[11px] font-medium text-[rgb(var(--color-text))] mb-1">
+                Email
+              </p>
+              <p>bangunciptasolusi01@gmail.com</p>
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
+
     </section>
   );
 }

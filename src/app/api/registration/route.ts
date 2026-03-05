@@ -4,19 +4,16 @@ import { getSheetsClient } from "@/lib/google-sheet-client";
 
 export const runtime = "nodejs";
 
-const RANGE = "registrations!A:N";
+const RANGE = "client!A:H";
 
 type RegistrationBody = {
   fullName: string;
-  birthPlace?: string;
-  birthDate?: string;
-  school?: string;
-  grade?: string;
-  city?: string;
-  phone: string;
-  competitions: string[];
-  tourGallery?: boolean;
-  visitActivities?: string[];
+  instansi?: string;
+  jenis_proyek?: string;
+  lokasi_proyek?: string;
+  deskripsi_singkat?: string;
+  phone?: string;
+  
 };
 
 export async function POST(req: Request) {
@@ -25,31 +22,23 @@ export async function POST(req: Request) {
 
     const {
       fullName,
-      birthPlace,
-      birthDate,
-      school,
-      grade,
-      city,
+      instansi,
+      jenis_proyek,
+      lokasi_proyek,
+      deskripsi_singkat,
       phone,
-    
-      competitions,
-      tourGallery,
-      visitActivities,
+     
     } = body;
 
     if (!fullName)
       return NextResponse.json({ error: "Nama wajib diisi" }, { status: 400 });
 
+    if (!instansi)
+      return NextResponse.json({ error: "Instansi wajib diisi" }, { status: 400 });
+
     if (!phone)
       return NextResponse.json(
         { error: "Nomor telepon wajib diisi" },
-        { status: 400 }
-      );
-
-    
-    if (!competitions || competitions.length === 0)
-      return NextResponse.json(
-        { error: "Minimal pilih 1 lomba" },
         { status: 400 }
       );
 
@@ -60,16 +49,11 @@ export async function POST(req: Request) {
       id,
       createdAt,
       fullName,
-      birthPlace ?? "",
-      birthDate ? new Date(birthDate).toISOString() : "",
-      school ?? "",
-      grade ?? "",
-      city ?? "",
+      instansi ?? "",
+      jenis_proyek ?? "",
+      lokasi_proyek ?? "",
+      deskripsi_singkat ?? "",
       phone,
-  
-      JSON.stringify(competitions),
-      tourGallery ? "Ya" : "Tidak",
-      JSON.stringify(visitActivities ?? []),
     ];
 
     const sheets = getSheetsClient();

@@ -1,139 +1,162 @@
 "use client";
 
-import { useState, useRef } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { cloudinaryImage } from "@/lib/cloudinaryImage";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function ArchitectureSection() {
-  const architectureServices = [
+
+  const heroImage =
+    "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772197330/Masjid-al-jabbar2_ptlpcm.jpg";
+
+  const projects = [
     {
-      name: "Bangunan Pendidikan",
-      images: [
-        "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772352740/SECTION-BEASISWA-LANDSCAPE_uk71mp.png",
-        "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772352740/SECTION-250-ANAK-YATIM-LANDSCAPE_tocttp.png",
-      ],
+      title: "Masjid",
+      desc: "Perancangan masjid modern dan kawasan ibadah terpadu.",
+      image:
+        "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772197330/Masjid-al-jabbar2_ptlpcm.jpg",
     },
     {
-      name: "Bangunan Perkantoran",
-      images: [
-        "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772352740/SECTION-250-ANAK-YATIM-LANDSCAPE_tocttp.png",
-        "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772352740/SECTION-250-ANAK-YATIM-LANDSCAPE_tocttp.png",
-      ],
+      title: "Sekolah",
+      desc: "Desain fasilitas pendidikan yang fungsional dan adaptif.",
+      image:
+        "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772197330/Masjid-al-jabbar2_ptlpcm.jpg",
+    },
+    {
+      title: "Rumah Sakit",
+      desc: "Perencanaan bangunan kesehatan sesuai standar medis.",
+      image:
+        "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772197330/Masjid-al-jabbar2_ptlpcm.jpg",
+    },
+    {
+      title: "Kantor",
+      desc: "Ruang kerja profesional yang efisien dan representatif.",
+      image:
+        "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772197330/Masjid-al-jabbar2_ptlpcm.jpg",
+    },
+    {
+      title: "Hunian",
+      desc: "Perancangan hunian modern dengan pendekatan fungsional.",
+      image:
+        "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772197330/Masjid-al-jabbar2_ptlpcm.jpg",
+    },
+    {
+      title: "Interior",
+      desc: "Penataan ruang interior dengan estetika dan efisiensi.",
+      image:
+        "https://res.cloudinary.com/de7fqcvpf/image/upload/v1772197330/Masjid-al-jabbar2_ptlpcm.jpg",
     },
   ];
 
   return (
-    <section id="arsitektur" className="py-10 md:py-20 bg-white">
+    <section id="arsitektur" className="section-tight bg-[rgb(var(--color-bg))]">
+
       <div className="container-main">
 
         {/* Headline */}
-        <div className="max-w-xl mx-auto mb-12 text-center">
-          <p className="text-[11px] tracking-[1.5px] uppercase text-[rgb(var(--color-primary))] font-medium mb-3">
-            Bidang Layanan
-          </p>
-          <div className="w-16 h-[3px] bg-[rgb(var(--color-primary))] mb-6 mx-auto rounded" />
-          <h2 className="text-[28px] md:text-[36px] font-semibold leading-[1.3] tracking-[0.2px]">
-            Perencanaan & Desain Arsitektur
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-8"
+        >
+          <h2 className="h2 text-[rgb(var(--color-primary))] mb-3">
+            Layanan Arsitektur
           </h2>
-          <p className="text-[15px] md:text-[16px] leading-[1.75] text-muted mt-4">
-            BANGUN.IN menghadirkan desain fungsional, kontekstual, dan estetis. Arsitektur bukan sekadar visual, tapi solusi ruang efektif & berkelanjutan.
-          </p>
-        </div>
 
-        {/* Architecture Services */}
-        <div className="grid md:grid-cols-2 gap-12">
-          {architectureServices.map((service, idx) => (
-            <ServiceCarousel key={idx} service={service} />
+          <p className="text-[12px] leading-[1.6] text-[rgb(var(--color-muted))] max-w-[520px]">
+            Perencanaan dan perancangan arsitektur yang mengintegrasikan
+            fungsi, estetika, dan keberlanjutan untuk berbagai jenis bangunan.
+          </p>
+        </motion.div>
+
+        {/* Hero Architecture Image */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="
+            relative
+            w-full
+            h-[220px]
+            md:h-[320px]
+            rounded-[var(--radius-lg)]
+            overflow-hidden
+            border
+            border-[rgb(var(--color-border))]
+            shadow-[var(--shadow-sm)]
+            mb-8
+          "
+        >
+          <Image
+            src={cloudinaryImage(heroImage, "banner")}
+            alt="Proyek arsitektur"
+            fill
+            sizes="100vw"
+            className="object-cover"
+          />
+
+          {/* overlay clean */}
+          <div className="absolute inset-0 bg-[rgb(var(--color-dark))]/20" />
+        </motion.div>
+
+        {/* Architecture Gallery */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+
+          {projects.map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.06 }}
+              className="
+                group
+                bg-[rgb(var(--color-surface))]
+                border
+                border-[rgb(var(--color-border))]
+                rounded-[var(--radius-md)]
+                overflow-hidden
+                shadow-[var(--shadow-sm)]
+                transition-all
+                duration-300
+                hover:shadow-[var(--shadow-md)]
+              "
+            >
+              {/* Image */}
+              <div className="relative h-[120px] md:h-[150px] overflow-hidden">
+
+                <Image
+                  src={cloudinaryImage(project.image, "preview")}
+                  alt={project.title}
+                  fill
+                  sizes="(max-width:768px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+
+                <div className="absolute inset-0 bg-[rgb(var(--color-dark))]/10" />
+              </div>
+
+              {/* Text */}
+              <div className="p-3">
+
+                <h3 className="text-[12.5px] font-semibold text-[rgb(var(--color-text))] mb-1">
+                  {project.title}
+                </h3>
+
+                <p className="text-[11px] leading-[1.5] text-[rgb(var(--color-muted))]">
+                  {project.desc}
+                </p>
+
+              </div>
+            </motion.div>
           ))}
+
         </div>
 
       </div>
     </section>
-  );
-}
-
-function ServiceCarousel({ service }: { service: { name: string; images: string[] } }) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const carouselRef = useRef<HTMLDivElement>(null);
-
-  const scrollToIndex = (index: number) => {
-    if (!carouselRef.current) return;
-    const container = carouselRef.current;
-    const child = container.children[index] as HTMLElement;
-    container.scrollTo({
-      left: child.offsetLeft - 8, // gap compensation
-      behavior: "smooth",
-    });
-    setActiveIndex(index);
-  };
-
-  const nextImage = () => scrollToIndex((activeIndex + 1) % service.images.length);
-  const prevImage = () =>
-    scrollToIndex((activeIndex - 1 + service.images.length) % service.images.length);
-
-  return (
-    <div className="relative">
-      <h3 className="text-[rgb(var(--color-primary))] font-semibold text-lg mb-4">{service.name}</h3>
-
-      {/* Carousel */}
-      <div className="relative">
-        <div
-          ref={carouselRef}
-          className="flex overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar gap-4"
-        >
-          {service.images.map((img, i) => (
-            <div
-              key={i}
-              className="flex-shrink-0 w-full md:w-[400px] h-[220px] relative rounded-xl overflow-hidden shadow-lg snap-center"
-            >
-              <Image
-                src={cloudinaryImage(img, "banner")}
-                alt={`${service.name} contoh desain ${i + 1}`}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 400px"
-                priority={i === 0}
-              />
-              <div className="absolute inset-0 bg-black/10 pointer-events-none rounded-xl" />
-            </div>
-          ))}
-        </div>
-
-        {/* Arrows desktop */}
-        {service.images.length > 1 && (
-          <>
-            <button
-              onClick={prevImage}
-              className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 bg-white/90 text-[rgb(var(--color-primary))] p-2 rounded-full shadow-md hover:scale-110 transition-transform"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              onClick={nextImage}
-              className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 bg-white/90 text-[rgb(var(--color-primary))] p-2 rounded-full shadow-md hover:scale-110 transition-transform"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </>
-        )}
-      </div>
-
-      
-
-      {/* Dots */}
-      <div className="flex justify-center mt-2 gap-2">
-        {service.images.map((_, i) => (
-          <span
-            key={i}
-            className={`w-2 h-2 rounded-full transition-all ${
-              activeIndex === i
-                ? "bg-[rgb(var(--color-primary))] scale-125"
-                : "bg-gray-300"
-            }`}
-          />
-        ))}
-      </div>
-    </div>
   );
 }

@@ -88,7 +88,7 @@ export default function Footer() {
             </h4>
 
             <Link
-              href="/kontak"
+              href="/kontak#consultation-form"
               className="
                 inline-flex
                 items-center
