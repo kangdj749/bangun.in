@@ -73,7 +73,8 @@ export default function HeroSection() {
                 hover:bg-[rgb(var(--color-primary))]/90
               "
             >
-              Konsultasi
+              
+              <a href="/kontak#consultation-form">Konsultasi</a>
             </button>
 
             {/* Secondary */}

@@ -1,49 +1,53 @@
-"use client";
+import type { Metadata } from "next";
+import HomeClient from "@/components/HomeClient";
 
+/* ================================
+   SEO METADATA
+================================ */
 
-import Hero from "@/components/Hero"
+export const metadata: Metadata = {
+  title:
+    "Bangun.in | Konsultan Arsitektur, Engineering & Geoteknik Profesional",
+  description:
+    "Bangun.in adalah konsultan arsitektur, engineering, topografi dan geoteknik profesional yang menghadirkan solusi perencanaan dan konstruksi terintegrasi di Indonesia.",
 
-import HybridWhatsAppCTA from "@/components/HybridWhatsAppCTA"
+  keywords: [
+    "konsultan arsitektur",
+    "konsultan engineering",
+    "jasa geoteknik",
+    "konsultan topografi",
+    "perencana konstruksi",
+    "engineering consultant indonesia",
+  ],
 
-import TrustStrip from "@/components/TrustStripSection";
+  alternates: {
+    canonical: "https://bangun.in",
+  },
 
+  openGraph: {
+    title:
+      "Bangun.in | Konsultan Arsitektur, Engineering & Geoteknik Profesional",
+    description:
+      "Solusi perencanaan arsitektur, engineering dan konstruksi profesional untuk proyek skala kecil hingga besar.",
+    url: "https://bangun.in",
+    siteName: "Bangun.in",
+    locale: "id_ID",
+    type: "website",
+  },
 
-import FinalCTASection from "@/components/FinalCTASection";
-import SectionWrapper from "@/components/SectionWrapper";
-import VisualServicesPreview from "@/components/VisualServicesPreview";
-import PortfolioPreview from "@/components/PortfolioPreview";
-
-
-
-const LandingPage: React.FC = () => {
-  
-
-  return (
-    <main className="relative">
-           
-      
-      
-        <Hero />
-        <VisualServicesPreview/>  
-        
-
-          <PortfolioPreview/>  
-     
-
-       
-           <TrustStrip />
-            
-
-         <SectionWrapper withDivider={false}>
-         <FinalCTASection/>
-         </SectionWrapper>
-
-                                   
-          {/* WhatsApp CTA hybrid */}
-          <HybridWhatsAppCTA />
-
-        </main>
-  );
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "Bangun.in | Konsultan Arsitektur & Engineering Profesional",
+    description:
+      "Konsultan arsitektur, engineering dan geoteknik profesional di Indonesia.",
+  },
 };
 
-export default LandingPage;
+/* ================================
+   PAGE
+================================ */
+
+export default function Page() {
+  return <HomeClient />;
+}

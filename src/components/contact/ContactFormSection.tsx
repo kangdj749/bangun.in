@@ -41,20 +41,20 @@ export default function ContactFormSection() {
       /* ========================= */
 
       const message = `
-Halo Admin,
+        Halo Admin,
 
-Ada permohonan konsultasi baru.
+        Ada permohonan konsultasi baru.
 
-Nama : ${data.fullName}
-Instansi : ${data.instansi}
-Jenis Proyek : ${data.jenis_proyek}
-Lokasi Proyek : ${data.lokasi_proyek}
+        Nama : ${data.fullName}
+        Instansi : ${data.instansi}
+        Jenis Proyek : ${data.jenis_proyek}
+        Lokasi Proyek : ${data.lokasi_proyek}
 
-Deskripsi :
-${data.deskripsi_singkat}
+        Deskripsi :
+        ${data.deskripsi_singkat}
 
-Kontak Client :
-${data.phone}
+        Kontak Client :
+        ${data.phone}
       `;
 
       const waURL = `https://wa.me/${ADMIN_WA}?text=${encodeURIComponent(

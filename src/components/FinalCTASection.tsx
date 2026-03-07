@@ -76,7 +76,8 @@ export default function ClosingCTA() {
                 hover:bg-[rgb(var(--color-primary))]/90
               "
             >
-              Ajukan Konsultasi
+            <a href="/kontak">Ajukan Konsultasi</a>
+              
             </button>
           </motion.div>
 
